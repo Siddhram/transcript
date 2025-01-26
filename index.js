@@ -20,10 +20,11 @@ cloudinary.config({
 // Initialize Express app
 const app = express();
 const PORT = 3000;
-
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow requests from this origin
+}));
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
 
 // Route to handle video upload and transcription
 app.post('/transcribe', async (req, res) => {
